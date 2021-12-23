@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2021-12-23 10:55
+-- Generated: 2021-12-23 17:38
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `S201_n2`.`videos` (
   `reproduccions` INT(11) NULL DEFAULT NULL,
   `likes` INT(11) NULL DEFAULT NULL,
   `dislikes` INT(11) NULL DEFAULT NULL,
-  `publicat` VARCHAR(45) NOT NULL,
+  `publicat` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   INDEX `fk_videos_usuaris1_idx` (`usuari_id` ASC),
   CONSTRAINT `fk_videos_usuaris1`
