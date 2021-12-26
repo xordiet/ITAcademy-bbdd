@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2021-12-23 17:38
+-- Generated: 2021-12-26 14:57
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -205,7 +205,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `S201_n2`.`comment_like` (
-  `id` INT(11) NOT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `tipus` ENUM('like', 'dislike') NOT NULL,
   `usuari_id` INT(11) NOT NULL,
   `comentari_id` INT(11) NOT NULL,
