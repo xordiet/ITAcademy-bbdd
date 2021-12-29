@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2021-12-23 12:11
+-- Generated: 2021-12-29 19:10
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -56,10 +56,10 @@ DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `S201_n3`.`credit_cards` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `numero` INT(12) NOT NULL,
-  `mes_cad` INT(2) NOT NULL,
-  `any_cad` INT(2) NOT NULL,
-  `ccv` INT(3) NOT NULL,
+  `numero` BIGINT(16) NOT NULL,
+  `mes_cad` INT(2) ZEROFILL NOT NULL,
+  `any_cad` INT(2) ZEROFILL NOT NULL,
+  `cvv` INT(3) ZEROFILL NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `S201_n3`.`playlist` (
   `num_cancons` INT(11) NOT NULL DEFAULT 0,
   `creacio` DATE NOT NULL,
   `eliminada` TINYINT(4) NOT NULL DEFAULT 0,
-  `data_eliminacio` DATE NOT NULL,
+  `data_eliminacio` DATE NULL DEFAULT NULL,
   `usuari_creador` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_playlist_usuaris1_idx` (`usuari_creador` ASC),
@@ -243,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `S201_n3`.`favorits` (
   PRIMARY KEY (`id`),
   INDEX `fk_favorits_usuaris1_idx` (`usuari_id` ASC),
   INDEX `fk_favorits_albums1_idx` (`album_id` ASC),
-  INDEX `fk_favorits_artistes1_idx` (`canco_id` ASC),
+  INDEX `fk_favorits_cancons1_idx` (`canco_id` ASC),
   CONSTRAINT `fk_favorits_usuaris1`
     FOREIGN KEY (`usuari_id`)
     REFERENCES `S201_n3`.`usuaris` (`id`)
@@ -254,9 +254,9 @@ CREATE TABLE IF NOT EXISTS `S201_n3`.`favorits` (
     REFERENCES `S201_n3`.`albums` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_favorits_artistes1`
+  CONSTRAINT `fk_favorits_cancons1`
     FOREIGN KEY (`canco_id`)
-    REFERENCES `S201_n3`.`artistes` (`id`)
+    REFERENCES `S201_n3`.`cancons` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
